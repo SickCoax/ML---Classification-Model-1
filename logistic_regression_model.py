@@ -23,9 +23,9 @@ preprocess = ColumnTransformer([("num" , StandardScaler() , num_cols) , ("cat" ,
 
 pipeline = Pipeline([("preprocess" , preprocess) , ("logreg" , LogisticRegression(max_iter=10000))])
 
-param_grid = {"logreg__C" : [0.001 , 0.01 , 0.1 , 1 ,10 ,100] , "logreg__penalty" : ["l2"] , "logreg__solver" : ["lbfgs"]}
+param_grid = {"logreg__C" : [0.001 , 0.01 , 0.1 , 1 ,10 ,100] , "logreg__solver" : ["lbfgs" , "saga"]}
 
-grid = GridSearchCV(pipeline, param_grid , cv=5 , scoring="f1")
+grid = GridSearchCV(pipeline, param_grid , cv=5 , scoring="f1" , n_jobs=-1)
 
 grid.fit(xtrain , ytrain)
 
@@ -40,3 +40,8 @@ print(ypred)
 # ----------------------
 f1Score = f1_score(ytest , ypred)
 print("F1 Score : ",f1Score)
+
+
+
+
+
