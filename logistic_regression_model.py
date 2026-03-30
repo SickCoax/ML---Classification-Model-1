@@ -6,7 +6,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split , GridSearchCV
 from sklearn.metrics import f1_score
 
-df1 = pd.read_csv(r"C:\Users\sailj\OneDrive\文档\GitHub\classification_model_1\Titanic-Dataset.csv")
+df1 = pd.read_csv(r"dataset/Titanic-Dataset.csv")
 
 df1["Age"] = df1["Age"].fillna(df1["Age"].median())
 df1["Embarked"] = df1["Embarked"].fillna(df1["Embarked"].mode()[0])
